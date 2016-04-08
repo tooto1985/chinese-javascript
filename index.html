@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script src="translate.js"></script>
+</head>
+<body>
+	分攤計算：
+	<input type="text" id="錢" size="4">元 /
+	<input type="text" id="人數" size="4">人 =
+	<input type="text" id="平均" size="4" readonly>
+	<script type="text/translate">
+		$(函數() {
+			函數 計算(錢,人數) {
+				宣告 結果;
+				嘗試 {
+					結果=錢/人數;
+					如果(為非數值(結果)) {
+						結果="非數值";
+					} 其他 如果(不為有限(結果)) {
+						結果="無限大";
+					}
+				} 捕捉(訊息) {
+					對話框("發生錯誤");
+				} 最後 {
+					$平均輸入框.值(結果);
+				}
+			}
+			函數 共用() {
+				計算($錢輸入框.值(),$人數輸入框.值());
+			}
+			宣告 $錢輸入框 = $("#錢");
+			宣告 $人數輸入框 = $("#人數");
+			宣告 $平均輸入框 = $("#平均");
+			$錢輸入框.鍵盤放開(共用);
+			$人數輸入框.鍵盤放開(共用);
+		});
+	</script>
+</body>
+</html>
